@@ -7,6 +7,10 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 
+
+
+
+
 //DataBase
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
@@ -33,16 +37,7 @@ app.use(bodyParser.json());
 const Users = require('./api/models/sis_users/sis_users');
 
 
-//Arduino
-var five = require('johnny-five');
-// const board = new five.Board();
 
-// board.on("ready", function() {
-//     // Create an Led on pin 13
-//     var led = new five.Led(13);
-//     // Blink every half second
-//     led.blink(2000);
-//   });
 
 const routes = require('./api/routes/router');
 app.use('/',routes);
