@@ -45,6 +45,12 @@ io.on('connection',function(socket){
 });
 
 
+app.get("/",function(req,res,next){
+	res.json({message:"azure server working properly"});
+
+});
+
+
 //io
 app.set('io', io);
 
