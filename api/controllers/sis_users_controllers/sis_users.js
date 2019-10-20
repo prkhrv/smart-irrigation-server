@@ -25,18 +25,21 @@ exports.create_a_user = function(req,res,next){
 
 
 exports.login_a_user = function(req,res,next){
-    users.findOne({user_name:req.body.user_name}).exec(function(err,user){
-        if(!user){
-            res.send("Noob");
-        }else if(user){
-            var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
-            if(passwordIsValid){
-                res.json({auth:true,message:"Logged in"});
-            }else{
-                res.json({auth:false,message:"NOT Logged in"});
+    if(req.body.user_name.length > 0 && req.body.password > 0){
+        users.findOne({user_name:req.body.user_name}).exec(function(err,user){
+            if(!user){
+                res.send("Noob");
+            }else if(user){
+                var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
+                if(passwordIsValid){
+                    res.json({auth:true,message:"Logged in"});
+                }else{
+                    res.json({auth:false,message:"NOT Logged in"});
+                }
             }
-        }
-
-
-    });
+        });
+    }else{
+        res.json({auth:false,message:"NOT Logged in"});
+    }
+    
 };
