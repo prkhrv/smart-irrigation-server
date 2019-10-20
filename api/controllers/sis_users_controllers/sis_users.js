@@ -25,7 +25,7 @@ exports.create_a_user = function(req,res,next){
 
 
 exports.login_a_user = function(req,res,next){
-    if(req.body.user_name.length > 0 && req.body.password > 0){
+    if(req.body.user_name.length > 0 && req.body.password.length > 0){
         users.findOne({user_name:req.body.user_name}).exec(function(err,user){
             if(!user){
                 res.send("Noob");
