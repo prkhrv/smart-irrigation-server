@@ -2,7 +2,7 @@
 var express = require('express');
 var app = express();
 // var cors = require('cors')
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 3000;
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var io = require('socket.io').listen(app.listen(port));
