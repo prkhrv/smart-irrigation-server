@@ -29,6 +29,22 @@ mongoose.connect(dbConfig.url, {
 });
 
 
+// Socket
+var clients = 0;
+io.on('connection',function(socket){
+    clients = clients+1;
+    console.log("client Connected");
+    console.log("Online Users "+clients);
+
+    socket.on('disconnect',function(){
+        clients = clients-1;
+        console.log("Client Gone");
+        console.log("Online Users "+clients);
+
+    })
+});
+
+
 //io
 app.set('io', io);
 
