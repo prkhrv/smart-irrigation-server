@@ -2,9 +2,18 @@ var five = require('johnny-five');
 
 var controller = process.argv[2] || "GP2D120XJ00F";
 
+var socket = require('socket.io');
+
 
 
 exports.turn_on_arduino = function(req,res,next){
+  var io = req.app.get('io');
+
+  io.on('connection',function(socket){
+
+    console.log("Connected with client");
+
+  });
     //Arduino
 const board = new five.Board();
 

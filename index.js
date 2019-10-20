@@ -5,7 +5,7 @@ var app = express();
 var port = process.env.PORT || 3000;
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-
+var io = require('socket.io').listen(app.listen(port));
 
 
 
@@ -29,6 +29,9 @@ mongoose.connect(dbConfig.url, {
 });
 
 
+//io
+app.set('io', io);
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -43,11 +46,4 @@ const routes = require('./api/routes/router');
 app.use('/',routes);
 
 
-app.listen(port,function(err){
-    if(err){
-        res.send(err);
-    }else{
-        console.log("Server running on "+port);
-    }
-
-});
+console.log("socket server started on "+port);
