@@ -43,3 +43,13 @@ exports.login_a_user = function(req,res,next){
     }
     
 };
+
+exports.get_all_users = function(req,res,next){
+    users.find().exec(function(err,users){
+        if(err){
+            res.send(err);
+        }else{
+            res.json(users);
+        }
+    });
+};
