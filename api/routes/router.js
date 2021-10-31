@@ -10,6 +10,7 @@ ArduinoController = require('../controllers/arduino_Controller/arduino_controlle
 router.post('/signup',UserController.create_a_user);
 router.post('/login',UserController.login_a_user);
 router.get('/users',UserController.get_all_users);
+router.post('/deluser',UserController.delete_a_user);
 
 
 //arduino routes
