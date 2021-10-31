@@ -53,3 +53,13 @@ exports.get_all_users = function(req,res,next){
         }
     });
 };
+
+exports.delete_a_user = function(req,res,next){
+    users.deleteOne({user_name:req.body.user_name}).exec(function(err,user){
+        if(err){
+            res.send(err);
+        }else{
+            res.json({success:true,message:"Deleted Successfully"});
+        }
+    });
+};
